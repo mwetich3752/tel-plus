@@ -1,0 +1,249 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tel Plus</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #222;
+    }
+
+    header {
+      background: #123c8c;
+      color: white;
+      padding: 22px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 30px;
+    }
+
+    header p {
+      margin-top: 6px;
+      opacity: 0.9;
+    }
+
+    .hero {
+      background: white;
+      margin: 20px auto;
+      max-width: 500px;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .hero h2 {
+      text-align: center;
+      color: #123c8c;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      text-align: center;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .amount {
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      color: #123c8c;
+      margin: 15px 0;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      margin: 10px 0 25px;
+    }
+
+    .label {
+      font-weight: bold;
+    }
+
+    .summary {
+      background: #eef3ff;
+      padding: 18px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .summary div {
+      display: flex;
+      justify-content: space-between;
+      margin: 9px 0;
+    }
+
+    .apply {
+      width: 100%;
+      border: none;
+      background: #123c8c;
+      color: white;
+      padding: 16px;
+      border-radius: 9px;
+      font-size: 17px;
+      font-weight: bold;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .apply:hover {
+      background: #0d2e6d;
+    }
+
+    .features {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 10px 20px 30px;
+    }
+
+    .feature {
+      background: white;
+      padding: 18px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .feature h3 {
+      color: #123c8c;
+      margin-bottom: 6px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #777;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Tel Plus</h1>
+  <p>Simple and convenient financial services</p>
+</header>
+
+<section class="hero">
+
+  <h2>Choose your amount</h2>
+  <p>Use the slider to calculate an example repayment.</p>
+
+  <div class="amount">
+    ZMW <span id="amount">1000</span>
+  </div>
+
+  <input
+    type="range"
+    id="amountSlider"
+    min="100"
+    max="10000"
+    step="100"
+    value="1000"
+  >
+
+  <div class="label">Loan duration</div>
+
+  <div style="text-align:center; margin:10px 0;">
+    <strong><span id="months">3</span> months</strong>
+  </div>
+
+  <input
+    type="range"
+    id="monthSlider"
+    min="1"
+    max="12"
+    value="3"
+  >
+
+  <div class="summary">
+    <div>
+      <span>Amount</span>
+      <strong>ZMW <span id="summaryAmount">1000</span></strong>
+    </div>
+
+    <div>
+      <span>Duration</span>
+      <strong><span id="summaryMonths">3</span> months</strong>
+    </div>
+
+    <div>
+      <span>Example total repayment</span>
+      <strong>ZMW <span id="repayment">1100</span></strong>
+    </div>
+  </div>
+
+  <button class="apply" onclick="applyNow()">
+    APPLY NOW
+  </button>
+
+</section>
+
+<section class="features">
+
+  <div class="feature">
+    <h3>⚡ Simple application</h3>
+    <p>Choose an amount and duration to see an example calculation.</p>
+  </div>
+
+  <div class="feature">
+    <h3>🔒 Privacy</h3>
+    <p>Your information should only be submitted through a secure and clearly identified service.</p>
+  </div>
+
+  <div class="feature">
+    <h3>📱 Mobile friendly</h3>
+    <p>Tel Plus is designed to work comfortably on mobile phones.</p>
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Tel Plus. Demo website.
+</footer>
+
+<script>
+
+  const amountSlider = document.getElementById("amountSlider");
+  const monthSlider = document.getElementById("monthSlider");
+
+  function calculate() {const amount = Number(amountSlider.value);
+    const months = Number(monthSlider.value);
+
+    // Example calculation only
+    const repayment = Math.round(amount * 1.10);
+
+    document.getElementById("amount").textContent = amount;
+    document.getElementById("summaryAmount").textContent = amount;
+    document.getElementById("months").textContent = months;
+    document.getElementById("summaryMonths").textContent = months;
+    document.getElementById("repayment").textContent = repayment;
+  }
+
+  amountSlider.addEventListener("input", calculate);
+  monthSlider.addEventListener("input", calculate);
+
+  function applyNow() {
+    alert("Tel Plus application demo. No application has been submitted.");
+  }
+
+  calculate();
+
+</script>
+
+</body>
+</html>
